@@ -1,0 +1,9 @@
+.Caregiver .PhoneInput{
+    display: flex !important;
+    align-items: center !important; 
+    justify-content: center !important;
+    
+}
+.Caregiver .PhoneInputCountry{
+    margin-top: 48px;
+}

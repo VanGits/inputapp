@@ -1,8 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 *{
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-family: "Poppins";
 }
 
 .App{
   overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input{
+  border: none;
+  border-bottom: 1px solid rgb(102, 102, 102);
+  outline: none;
+  width: 100%;
+  transition: border-bottom-color 0.3s ease-in-out;
+  margin-top: 48px;
+  font-size: 22px;
+}
+input:focus,
+input:active {
+  /* use the same border style as for normal state */
+  border: none;
+  border-bottom: 2px solid #579ff1;
+  outline: none;
 }

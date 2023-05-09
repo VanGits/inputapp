@@ -1,10 +1,23 @@
+import "./App.css";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
+import Main from "./components/Main";
+import Client from "./components/Client";
+import Caregiver from "./components/Caregiver";
 
-import './App.css';
 
 function App() {
+  
   return (
     <div className="App">
-      hey
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Main />} />
+          <Route path="/client-forms" element={<Client />} />
+          
+          <Route path={`/caregiver-forms/:id`} element={<Caregiver/>} />
+          
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

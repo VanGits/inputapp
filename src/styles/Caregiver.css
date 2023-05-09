@@ -1,0 +1,79 @@
+.Caregiver{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.Caregiver form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 500px;
+    width: 800px;
+    
+
+}
+
+.Caregiver h2{
+    margin-bottom: 24px;
+    font-size: 32px;
+}
+
+.Caregiver button{
+    margin-top: 32px;
+    padding: 12px;
+    width: 200px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #579ff1;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.Caregiver h4{
+    font-weight: 300;
+}
+
+.Caregiver .option{
+    padding: 8px !important;
+    font-weight: 600;
+    font-size: 20px;
+    max-width: 400px;
+    width: 100%;
+    background: #579ff1;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    
+}
+
+.Caregiver .other {
+
+    margin-top: 32px;
+    align-self: flex-start;
+    font-size: 28px;
+    
+}
+
+.Caregiver .other h4{
+    font-weight: 800 ;
+}
+
+.Caregiver .optionLetter{
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    padding: 0px;
+}
+
+
+
+
+
