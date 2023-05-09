@@ -32,3 +32,8 @@ input:active {
   border-bottom: 2px solid #579ff1;
   outline: none;
 }
+
+img{
+  height: 200px;
+  width: 200px;
+}

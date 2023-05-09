@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import caregiverForms from "../questions/caregiver-questions.json";
+import caregiverForms from "../questions/caregiver-questions";
 import "../styles/Caregiver.css";
 import { useParams, useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
@@ -15,8 +15,16 @@ const Caregiver = () => {
   const handleAnswer = (e) => {
     e.preventDefault();
 
-    navigate(`/caregiver-forms/${parseInt(id) + 1}`);
+    if(currentQuestion === 15) {
+        alert("Submitted!")
+        navigate(`/caregiver-forms/${parseInt(id) + 1}`)
+    } else {
+        navigate(`/caregiver-forms/${parseInt(id) + 1}`);
+    }
+
+   
   };
+  console.log(currentQuestion)
 
   const handleOptionClick = (option) => {
     console.log("clicked", option);
@@ -49,11 +57,14 @@ const Caregiver = () => {
   );
 
   const questions = caregiverForms.map((form, index) => {
+    
     if (parseInt(id) === index) {
       return (
         <form onSubmit={handleAnswer} key={index}>
           <h2>{form.question}</h2>
+          
           <h4>{form.desc}</h4>
+          {form.image && <img src={form.image} alt="" />}
           {form.options &&
             form.options.map((option, optionIndex) => {
               if (option === "Other") {
@@ -76,39 +87,43 @@ const Caregiver = () => {
               }
             })}
           {form.type === "phone" ? (
-  <PhoneNumber
-    placeholder="Enter phone number"
-    value={phoneNumber}
-    onChange={handlePhoneChange}
-  />
-) : form.type === "email" ? (
-  <input
-    type="email"
-    name="answer"
-    placeholder="Type your email here..."
-    onChange={handleCheckInput}
-    required
-  />
-) : form.type === "datetime" ? (
-  <input
-    type="date"
-    name="answer"
-    placeholder="Select a date..."
-    onChange={handleCheckInput}
-    required
-  />
-) : form.input ? (
-  <input
-    type="text"
-    name="answer"
-    placeholder="Type your answer here..."
-    onChange={handleCheckInput}
-    required
-  />
-) : (
-  ""
-)}
-          <button>Next</button>
+            <PhoneNumber
+              placeholder="Enter phone number"
+              value={phoneNumber}
+              onChange={handlePhoneChange}
+            />
+          ) : form.type === "email" ? (
+            <input
+              type="email"
+              name="answer"
+              placeholder="Type your email here..."
+              onChange={handleCheckInput}
+              required
+            />
+          ) : form.type === "datetime" ? (
+            <input
+              type="date"
+              name="answer"
+              placeholder="Select a date..."
+              onChange={handleCheckInput}
+              required
+            />
+          ) : form.input ? (
+            <input
+              type="text"
+              name="answer"
+              placeholder="Type your answer here..."
+              onChange={handleCheckInput}
+              required
+            />
+          ) : (
+            ""
+          )}
+         {!form.buttonsOnly && (
+            <button type="submit">
+              {currentQuestion === 15 ? "Submit" : "Next"}
+            </button>
+          )}
         </form>
       );
     }

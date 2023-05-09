@@ -1,4 +1,8 @@
-[
+import email from "../assets/email.svg"
+import location from "../assets/location.svg"
+
+
+const caregiverData = [
   {
     "id": 1,
     "question": "Interested in working with us?",
@@ -6,7 +10,8 @@
     "type": "text",
     "options": [],
     "input": false,
-    "image": ""
+    "image": "",
+    "buttonsOnly": true
   },
   {
     "id": 2,
@@ -15,7 +20,8 @@
     "type": "text",
     "options": [],
     "input": true,
-    "image": ""
+    "image": "",
+    "buttonsOnly": false
   },
 
   {
@@ -25,7 +31,8 @@
     "type": "text",
     "options": [],
     "input": true,
-    "image": ""
+    "image": "",
+    "buttonsOnly": false
   },
   {
     "id": 4,
@@ -34,7 +41,8 @@
     "type": "phone",
     "options": [],
     "input": true,
-    "image": ""
+    "image": "",
+    "buttonsOnly": false
   },
   {
     "id": 5,
@@ -43,7 +51,8 @@
     "type": "email",
     "options": [],
     "input": true,
-    "image": ""
+    "image": email,
+    "buttonsOnly": false
   },
   {
     "id": 6,
@@ -52,7 +61,8 @@
     "type": "text",
     "options": [],
     "input": true,
-    "image": ""
+    "image": location,
+    "buttonsOnly": false
   },
   {
     "id": 7,
@@ -61,7 +71,8 @@
     "type": "text",
     "options": [],
     "input": true,
-    "image": ""
+    "image": "",
+    "buttonsOnly": false
   },
   {
     "id": 8,
@@ -76,7 +87,8 @@
       "Other"
     ],
     "input": true,
-    "image": ""
+    "image": "",
+    "buttonsOnly": false
   },
   {
     "id": 9,
@@ -85,7 +97,8 @@
     "type": "text",
     "options": ["Yes", "No"],
     "input": false,
-    "image": ""
+    "image": "",
+    "buttonsOnly": true
   },
   {
     "id": 10,
@@ -94,7 +107,8 @@
     "type": "text",
     "options": ["Yes", "No"],
     "input": false,
-    "image": ""
+    "image": "",
+    "buttonsOnly": true
   },
   {
     "id": 11,
@@ -103,7 +117,8 @@
     "type": "text",
     "options": ["Come & Go", "Live-in", "Other"],
     "input": true,
-    "image": ""
+    "image": "",
+    "buttonsOnly": false
   },
   {
     "id": 12,
@@ -116,7 +131,8 @@
       "Other"
     ],
     "input": true,
-    "image": ""
+    "image": "",
+    "buttonsOnly": false
   },
 
   {
@@ -134,7 +150,8 @@
       "Sunday"
     ],
     "input": false,
-    "image": ""
+    "image": "",
+    "buttonsOnly": true
   },
   {
     "id": 14,
@@ -143,7 +160,8 @@
     "type": "text",
     "options": [],
     "input": true,
-    "image": ""
+    "image": "",
+    "buttonsOnly": false
   },
   {
     "id": 15,
@@ -152,7 +170,8 @@
     "type": "text",
     "options": ["Day Shifts", "Night Shifts", "Overnight", "Live-in", "Other"],
     "input": true,
-    "image": ""
+    "image": "",
+    "buttonsOnly": false
   },
   {
     "id": 16,
@@ -161,7 +180,8 @@
     "type": "datetime",
     "options": [],
     "input": true,
-    "image": ""
+    "image": "",
+    "buttonsOnly": false
   },
   {
     "id": 17,
@@ -170,6 +190,9 @@
     "type": "",
     "options": [],
     "input": false,
-    "image": ""
+    "image": "",
+    "buttonsOnly": true
   }
 ]
+
+export default caregiverData
