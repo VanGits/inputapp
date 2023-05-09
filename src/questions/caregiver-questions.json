@@ -167,7 +167,7 @@
     "id": 17,
     "question": "Thank you for completing the form. Someone from our team will reach out to you as soon as possible.",
     "desc": "Any friend referrals are always appreciated! Feel free to send them this link to get started.",
-    "type": "datetime",
+    "type": "",
     "options": [],
     "input": false,
     "image": ""
