@@ -28,7 +28,7 @@ const Caregiver = () => {
     cna: "",
   });
 
-  const url = "http://localhost:9292" || "https://inputserver.herokuapp.com";
+  const url = "https://inputserver.herokuapp.com" || "http://localhost:9292"
 
   const handleAnswer = async (e) => {
     e.preventDefault();
