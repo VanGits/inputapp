@@ -1,5 +1,6 @@
 import email from "../assets/email.svg"
 import location from "../assets/location.svg"
+import drive from "../assets/drive.svg"
 
 
 const caregiverData = [
@@ -12,6 +13,7 @@ const caregiverData = [
     "input": false,
     "image": "",
     "buttonsOnly": false
+    
   },
   {
     "id": 2,
@@ -21,7 +23,8 @@ const caregiverData = [
     "options": [],
     "input": true,
     "image": "",
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "fullName"
   },
 
   {
@@ -32,7 +35,8 @@ const caregiverData = [
     "options": [],
     "input": true,
     "image": "",
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "age"
   },
   {
     "id": 4,
@@ -42,7 +46,9 @@ const caregiverData = [
     "options": [],
     "input": true,
     "image": "",
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "phone"
+    
   },
   {
     "id": 5,
@@ -52,7 +58,8 @@ const caregiverData = [
     "options": [],
     "input": true,
     "image": email,
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "email"
   },
   {
     "id": 6,
@@ -62,7 +69,8 @@ const caregiverData = [
     "options": [],
     "input": true,
     "image": location,
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "location"
   },
   {
     "id": 7,
@@ -72,7 +80,8 @@ const caregiverData = [
     "options": [],
     "input": true,
     "image": "",
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "experience"
   },
   {
     "id": 8,
@@ -88,7 +97,8 @@ const caregiverData = [
     ],
     "input": true,
     "image": "",
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "position"
   },
   {
     "id": 9,
@@ -97,8 +107,9 @@ const caregiverData = [
     "type": "text",
     "options": ["Yes", "No"],
     "input": false,
-    "image": "",
-    "buttonsOnly": true
+    "image": drive,
+    "buttonsOnly": true,
+    "name": "driving"
   },
   {
     "id": 10,
@@ -108,7 +119,8 @@ const caregiverData = [
     "options": ["Yes", "No"],
     "input": false,
     "image": "",
-    "buttonsOnly": true
+    "buttonsOnly": true,
+    "name": "cna"
   },
   {
     "id": 11,
@@ -118,7 +130,8 @@ const caregiverData = [
     "options": ["Come & Go", "Live-in", "Other"],
     "input": true,
     "image": "",
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "casePrefer"
   },
   {
     "id": 12,
@@ -132,7 +145,9 @@ const caregiverData = [
     ],
     "input": true,
     "image": "",
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "lift"
+
   },
 
   {
@@ -151,7 +166,9 @@ const caregiverData = [
     ],
     "input": false,
     "image": "",
-    "buttonsOnly": true
+    "buttonsOnly": true,
+    "name": "day"
+
   },
   {
     "id": 14,
@@ -161,7 +178,8 @@ const caregiverData = [
     "options": [],
     "input": true,
     "image": "",
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "hours"
   },
   {
     "id": 15,
@@ -171,7 +189,8 @@ const caregiverData = [
     "options": ["Day Shifts", "Night Shifts", "Overnight", "Live-in", "Other"],
     "input": true,
     "image": "",
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "shift"
   },
   {
     "id": 16,
@@ -181,7 +200,8 @@ const caregiverData = [
     "options": [],
     "input": true,
     "image": "",
-    "buttonsOnly": false
+    "buttonsOnly": false,
+    "name": "date"
   },
   {
     "id": 17,
@@ -191,7 +211,8 @@ const caregiverData = [
     "options": [],
     "input": false,
     "image": "",
-    "buttonsOnly": true
+    "buttonsOnly": true,
+    "name": ""
   }
 ]
 

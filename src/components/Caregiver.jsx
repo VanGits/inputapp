@@ -11,62 +11,82 @@ const Caregiver = () => {
   const [currentQuestion, setCurrentQuestion] = useState(parseInt(id));
   const [phoneNumber, setPhoneNumber] = useState("");
   const [checkInput, setCheckInput] = useState("");
+  const [formValues, setFormValues] = useState({
+    age: "",
+    casePrefer: "",
+    cna: "",
+    date: "",
+    day: "",
+    driving: "",
+    email: "",
+    experience: "",
+    hours: "",
+    lift: "",
+    location: "",
+    phone: "",
+    position: "",
+    shift: "",
+  });
+
+  console.dir(formValues);
 
   const handleAnswer = (e) => {
     e.preventDefault();
 
-    if(parseInt(id) === 15) {
-        alert("Submitted!")
-        setCurrentQuestion(currentQuestion + 1)
-        navigate(`/caregiver-forms/${parseInt(id) + 1}`)
-    } else {
-        setCurrentQuestion(currentQuestion + 1)
-        navigate(`/caregiver-forms/${parseInt(id) + 1}`);
+    if (parseInt(id) === 15) {
+      alert("Submitted!");
     }
 
-   
-  };
-  
+    if (e.target.type !== "button") {
+      setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    }
 
-  const handleOptionClick = (option) => {
-    console.log("clicked", option);
-    setCurrentQuestion(currentQuestion + 1)
+    setCurrentQuestion(currentQuestion + 1);
     navigate(`/caregiver-forms/${parseInt(id) + 1}`);
+  };
+
+  const handleOptionClick = (option, name) => {
+    console.log("clicked", option, name);
+    setCurrentQuestion(currentQuestion + 1);
+    navigate(`/caregiver-forms/${parseInt(id) + 1}`);
+    setFormValues((prev) => ({ ...prev, [name]: option }));
   };
 
   const handlePhoneChange = (value) => {
     setPhoneNumber(value);
+    setFormValues({ ...formValues, phone: value });
   };
 
-  const handleCheckInput = (e) => {
-    setCheckInput(e.target.value);
-    console.log(checkInput);
+  const handleCheckInput = (e, form) => {
+    const value = e.target.value;
+    const name = e.target.name;
+
+    setFormValues((prev) => ({ ...prev, [name]: value }));
   };
 
   useEffect(() => {
     const handlePopState = () => {
       setCurrentQuestion((prev) => prev - 1);
     };
-  
+
     window.addEventListener("popstate", handlePopState);
-  
+
     return () => {
       window.removeEventListener("popstate", handlePopState);
     };
   }, []);
-  console.log(currentQuestion)
+  console.log(currentQuestion);
 
   const letters = [...Array(26)].map((_, i) =>
     String.fromCharCode("A".charCodeAt(0) + i)
   );
 
   const questions = caregiverForms.map((form, index) => {
-    
     if (parseInt(id) === index) {
       return (
         <form onSubmit={handleAnswer} key={index}>
           <h2>{form.question}</h2>
-          
+
           <h4>{form.desc}</h4>
           {form.image && <img src={form.image} alt="" />}
           {form.options &&
@@ -75,6 +95,20 @@ const Caregiver = () => {
                 return (
                   <div className="other" key={optionIndex}>
                     <h4>Other:</h4>
+                    <input
+                      type="text"
+                      name={form.name}
+                      placeholder="Type your answer here..."
+                      onKeyDown={(e) => {
+                        if (e.keyCode === 13) {
+                          e.preventDefault();
+                          handleCheckInput(e, form.name);
+                        }
+                      }}
+                      onChange={(e) => handleCheckInput(e, form.name)}
+                      required
+                      value={formValues[form.name] || ""}
+                    />
                   </div>
                 );
               } else {
@@ -82,7 +116,7 @@ const Caregiver = () => {
                   <button
                     className="option"
                     key={optionIndex}
-                    onClick={() => handleOptionClick(option)}
+                    onClick={() => handleOptionClick(option, form.name)}
                   >
                     <div className="optionLetter">{letters[optionIndex]}</div>
                     {option}
@@ -99,31 +133,34 @@ const Caregiver = () => {
           ) : form.type === "email" ? (
             <input
               type="email"
-              name="answer"
+              name={form.name}
               placeholder="Type your email here..."
-              onChange={handleCheckInput}
+              onChange={(e) => handleCheckInput(e, form.name)}
               required
+              value={formValues[form.name] || ""}
             />
           ) : form.type === "datetime" ? (
             <input
               type="date"
-              name="answer"
+              name={form.name}
               placeholder="Select a date..."
-              onChange={handleCheckInput}
+              onChange={(e) => handleCheckInput(e, form.name)}
               required
+              value={formValues[form.name] || ""}
             />
-          ) : form.input ? (
+          ) : form.input && form.options.indexOf("Other") === -1 ? (
             <input
               type="text"
-              name="answer"
+              name={form.name}
               placeholder="Type your answer here..."
-              onChange={handleCheckInput}
+              onChange={(e) => handleCheckInput(e, form.name)}
               required
+              value={formValues[form.name] || ""}
             />
           ) : (
             ""
           )}
-         {!form.buttonsOnly && (
+          {!form.buttonsOnly && (
             <button type="submit">
               {currentQuestion === 15 ? "Submit" : "Next"}
             </button>

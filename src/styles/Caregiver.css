@@ -55,7 +55,9 @@
 
     margin-top: 32px;
     align-self: flex-start;
+    justify-content: flex-start;
     font-size: 28px;
+    width: 100%;
     
 }
 
@@ -71,6 +73,10 @@
     justify-content: center;
     color: #000000;
     padding: 0px;
+}
+
+.Caregiver .other input{
+    width: 100%;
 }
 
 
