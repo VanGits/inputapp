@@ -3,6 +3,9 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    background-color: white;
+    
+    border: 1px solid rgb(141, 141, 141);
 }
 
 .Caregiver form{
@@ -10,8 +13,13 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 600px;
-    width: 800px;
+    height: 800px;
+    max-width: 1000px;
+    width: 100%;
+    
+    padding: 48px;
+    border-radius: 4px;
+    
     
 
 }
