@@ -1,7 +1,9 @@
 import email from "../assets/email.svg"
-import location from "../assets/location.svg"
 import drive from "../assets/drive.svg"
 import location2 from "../assets/location-1.svg"
+import phone from "../assets/phone.svg"
+import experience from "../assets/experience.svg"
+import name from "../assets/name.svg"
 
 
 const caregiverData = [
@@ -23,7 +25,7 @@ const caregiverData = [
     "type": "text",
     "options": [],
     "input": true,
-    "image": "",
+    "image": name,
     "buttonsOnly": false,
     "name": "fullName"
   },
@@ -46,7 +48,7 @@ const caregiverData = [
     "type": "phone",
     "options": [],
     "input": true,
-    "image": "",
+    "image": phone,
     "buttonsOnly": false,
     "name": "phone"
     
@@ -80,7 +82,7 @@ const caregiverData = [
     "type": "text",
     "options": [],
     "input": true,
-    "image": "",
+    "image": experience,
     "buttonsOnly": false,
     "name": "experience"
   },
