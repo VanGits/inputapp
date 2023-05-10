@@ -7,7 +7,7 @@ import Caregiver from "./components/Caregiver";
 
 function App() {
 
-  const url = "http://localhost:9292"
+  const url = "https://inputserver.herokuapp.com" || "http://localhost:9292"
   
   return (
     <div className="App">
