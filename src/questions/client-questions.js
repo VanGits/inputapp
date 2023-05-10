@@ -1,3 +1,8 @@
+import form from "../assets/clientForm.svg"
+import relationship from "../assets/relationship.svg"
+import calendar from "../assets/calendar.svg"
+
+
 const clientData = [
   {
     id: 1,
@@ -7,7 +12,7 @@ const clientData = [
     type: "text",
     options: [],
     input: false,
-    image: "",
+    image: form,
     buttonsOnly: false,
   },
   {
@@ -63,7 +68,7 @@ const clientData = [
     type: "text",
     options: [],
     input: true,
-    image: "",
+    image: relationship,
     buttonsOnly: false,
     name: "relationshipWithClient",
   },
@@ -170,7 +175,7 @@ const clientData = [
     type: "datetime",
     options: [],
     input: true,
-    image: "",
+    image: calendar,
     buttonsOnly: false,
     name: "startDate",
   },
