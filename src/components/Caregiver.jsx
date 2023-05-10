@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import PhoneNumber from "./PhoneNumber";
 
-const Caregiver = () => {
+const Caregiver = ({url}) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(parseInt(id));
@@ -28,7 +28,7 @@ const Caregiver = () => {
     cna: "",
   });
 
-  const url = "https://inputserver.herokuapp.com" || "http://localhost:9292"
+  
 
   const handleAnswer = async (e) => {
     e.preventDefault();
@@ -50,7 +50,9 @@ const Caregiver = () => {
 
         const formData = {
           formValue: updatedFormValues, // Wrap formValues inside the formValue key
+          sheetIndex: 0
         };
+        
 
         // Your fetch request here
         const response = await fetch(`${url}/add-row`, {

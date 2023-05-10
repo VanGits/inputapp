@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import PhoneNumber from "./PhoneNumber";
 
-const Client = () => {
+const Client = ({ url }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(parseInt(id));
@@ -33,8 +33,6 @@ const Client = () => {
     clientNotes: "",
   });
 
-  const url = "https://inputserver.herokuapp.com" || "http://localhost:9292";
-  console.log(formValues, "value");
   const handleAnswer = async (e) => {
     e.preventDefault();
 
@@ -42,33 +40,31 @@ const Client = () => {
       try {
         const updatedFormValues = { ...formValues };
 
-        // Convert specific values to strings
-        const stringFields = ["age", "cna", "experience", "hours", "lift"];
-        stringFields.forEach((field) => {
-          updatedFormValues[field] = String(updatedFormValues[field]);
-        });
-
-        // Join the day array if it exists
-        if (Array.isArray(formValues.day) && formValues.day.length > 0) {
-          updatedFormValues.day = formValues.day.join(",");
+        // Join the dayPref array if it exists
+        if (
+          Array.isArray(formValues.dayPref) &&
+          formValues.dayPref.length > 0
+        ) {
+          updatedFormValues.dayPref = formValues.dayPref.join(",");
         }
 
         const formData = {
           formValue: updatedFormValues, // Wrap formValues inside the formValue key
+          sheetIndex: 1,
         };
-
+        console.log(JSON.stringify(formData));
         // Your fetch request here
-        // const response = await fetch(`${url}/add-row`, {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify(formData),
-        // });
+        const response = await fetch(`${url}/add-row`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
 
-        // if (!response.ok) {
-        //   throw new Error(`Failed to add new row: ${response.status}`);
-        // }
+        if (!response.ok) {
+          throw new Error(`Failed to add new row: ${response.status}`);
+        }
       } catch (error) {
         console.error("Error:", error);
         alert("Error adding new row: " + error.message);

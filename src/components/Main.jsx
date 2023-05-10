@@ -1,5 +1,4 @@
 import React from 'react';
-import Caregiver from './Caregiver';
 import { Link } from "react-router-dom";
 
 const Main = () => {
