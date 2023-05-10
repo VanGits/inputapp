@@ -9,7 +9,7 @@ const Main = () => {
             <Link to="/caregiver-forms/0">
                 <button>caregiver</button>
             </Link>
-            <Link to="/client-forms">
+            <Link to="/client-forms/0">
                 <button>client</button>
             </Link>
             

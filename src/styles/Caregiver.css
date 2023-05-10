@@ -1,3 +1,18 @@
+.clientWrapper{
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#FFFAF4, #FFFAF4);
+}
+
+.Client button{
+    background-color: #E08E6D !important;
+}
+
+
 .Caregiver{
     display: flex;
     align-items: center;
@@ -8,7 +23,17 @@
     border: 1px solid rgb(141, 141, 141);
 }
 
-.Caregiver form{
+.Client{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(141, 141, 141);
+}
+
+.Caregiver form, .Client form{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,12 +59,15 @@
 
 }
 
-.Caregiver h2{
+.Client h2, .Caregiver h2{
     margin-bottom: 24px;
-    font-size: 32px;
+    font-size: 30px;
+    font-weight: 500;
+    
 }
 
-.Caregiver button{
+
+.Caregiver button, .Client button{
     margin-top: 32px;
     padding: 12px;
     width: 200px;
@@ -52,11 +80,11 @@
     cursor: pointer;
 }
 
-.Caregiver h4{
+.Caregiver h4, .Client h4{
     font-weight: 300;
 }
 
-.Caregiver .check-or-not .option{
+.Caregiver .check-or-not .option, .Client .check-or-not .option{
     padding: 12px !important;
     font-weight: 400;
     font-size: 20px;
@@ -70,7 +98,7 @@
     
 }
 
-.Caregiver .other {
+.Caregiver .other, .Client .other {
 
     margin-top: 32px;
     align-self: flex-start;
@@ -80,13 +108,13 @@
     
 }
 
-.Caregiver .other h4{
+.Caregiver .other h4, .Client .other h4{
     font-weight: 600 ;
     font-size: 24px;
     text-align: left;
 }
 
-.Caregiver .optionLetter{
+.Caregiver .optionLetter, .Client .optionLetter{
     width: 30px;
     height: 100%;
     display: flex;
@@ -100,11 +128,15 @@
     margin-right: 24px;
 }
 
-.Caregiver .other input{
+.Client .optionLetter{
+    color: #E08E6D;
+}
+
+.Caregiver .other input, .Client .other input{
     width: 100%;
 }
 
-.Caregiver .options{
+.Caregiver .options, .Client .options{
     width: 100%;
     height: 100%;
     display: flex;
@@ -112,7 +144,7 @@
     justify-content: center;
 }
 
-.Caregiver form .options {
+.Caregiver form .options, .Client form .options {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
@@ -140,15 +172,15 @@
 }
 
 @media (max-width: 768px) {
-    .Caregiver form{
+    .Caregiver form, .Client form{
         max-width: 400px;
         width: 100%;
     }
 
-    .Caregiver h2{
+    .Caregiver h2,  .Client h2{
         font-size: 24px;
     }
-    .Caregiver .check-or-not .option{
+    .Caregiver .check-or-not .option, .Client .check-or-not .option{
         padding: 12px !important;
         font-weight: 400;
         font-size: 18px;
@@ -161,12 +193,12 @@
         align-items: center;
         
     }
-    .Caregiver .other input{
+    .Caregiver .other input, .Client .other input{
         width: 40%;
     }
     
 
-    .Caregiver .other h4{
+    .Caregiver .other h4, .Client .other h4{
         text-align: center;
     }
     img{

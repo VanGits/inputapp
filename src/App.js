@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Main />} />
-          <Route path="/client-forms" element={<Client />} />
+          <Route path="/client-forms/:id" element={<Client />} />
           
           <Route path={`/caregiver-forms/:id`} element={<Caregiver/>} />
           

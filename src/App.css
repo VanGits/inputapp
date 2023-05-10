@@ -26,11 +26,18 @@ input{
   margin-top: 48px;
   font-size: 22px;
 }
-input:focus,
-input:active {
+.Caregiver input:focus,
+.Caregiver input:active {
   /* use the same border style as for normal state */
   border: none;
   border-bottom: 2px solid #579ff1;
+  outline: none;
+}
+.Client input:focus,
+.Client input:active {
+  /* use the same border style as for normal state */
+  border: none;
+  border-bottom: 2px solid #F6C391;
   outline: none;
 }
 
