@@ -52,7 +52,7 @@ const Client = ({ url }) => {
           formValue: updatedFormValues, // Wrap formValues inside the formValue key
           sheetIndex: 1,
         };
-        console.log(JSON.stringify(formData));
+       
         // Your fetch request here
         const response = await fetch(`${url}/add-row`, {
           method: "POST",
