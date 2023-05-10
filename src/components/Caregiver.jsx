@@ -12,28 +12,68 @@ const Caregiver = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [checkInput, setCheckInput] = useState("");
   const [formValues, setFormValues] = useState({
+    fullName: "",
     age: "",
-    casePrefer: "",
-    cna: "",
-    date: "",
-    day: "",
-    driving: "",
-    email: "",
-    experience: "",
-    hours: "",
-    lift: "",
-    location: "",
     phone: "",
-    position: "",
+    email: "",
+    location: "",
     shift: "",
+    casePrefer: "",
+    date: "",
+    driving: "",
+    day: [],
+    hours: "",
+    experience: "",
+    lift: "",
+    position: "",
+    cna: "",
   });
+
+  const url = "http://localhost:9292" || "https://inputserver.herokuapp.com"
 
   console.dir(formValues);
 
-  const handleAnswer = (e) => {
+  const handleAnswer = async (e) => {
     e.preventDefault();
 
     if (parseInt(id) === 15) {
+      try {
+        const updatedFormValues = { ...formValues };
+
+        // Convert specific values to strings
+        const stringFields = ["age", "cna", "experience", "hours", "lift"];
+        stringFields.forEach((field) => {
+          updatedFormValues[field] = String(updatedFormValues[field]);
+        });
+
+        // Join the day array if it exists
+        if (Array.isArray(formValues.day) && formValues.day.length > 0) {
+          updatedFormValues.day = formValues.day.join(",");
+        }
+
+        const formData = {
+          formValue: updatedFormValues, // Wrap formValues inside the formValue key
+        };
+        console.log(JSON.stringify(formData));
+
+        // Your fetch request here
+        const response = await fetch(`${url}/add-row`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to add new row: ${response.status}`);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Error adding new row: " + error.message);
+        return;
+      }
+
       alert("Submitted!");
     }
 
@@ -61,10 +101,10 @@ const Caregiver = () => {
     if (e.target.type === "checkbox") {
       const value = e.target.value;
       const isChecked = e.target.checked;
-  
+
       setFormValues((prevFormValues) => {
         let updatedValues;
-  
+
         if (isChecked) {
           // Add the selected option to the array
           updatedValues = {
@@ -80,7 +120,7 @@ const Caregiver = () => {
             ),
           };
         }
-  
+
         return updatedValues;
       });
     } else {
@@ -116,7 +156,7 @@ const Caregiver = () => {
           <h2>{form.question}</h2>
 
           <h4>{form.desc}</h4>
-          {form.image && <img src={form.image} alt="" className="form-image"/>}
+          {form.image && <img src={form.image} alt="" className="form-image" />}
           <div className={form.type === "check" ? "options" : "options-flex"}>
             {form.options &&
               form.options.map((option, optionIndex) => {
@@ -144,13 +184,15 @@ const Caregiver = () => {
                   return (
                     <div className="check-or-not" key={optionIndex}>
                       {form.type === "check" ? (
-                        <label className="checkboxOption" >
+                        <label className="checkboxOption">
                           <input
                             type="checkbox"
                             name={form.name}
                             value={option}
                             onChange={(e) => handleCheckInput(e, form.name)}
-                            checked={(formValues[form.name] || []).includes(option)}
+                            checked={(formValues[form.name] || []).includes(
+                              option
+                            )}
                           />
                           {option}
                         </label>
