@@ -10,7 +10,6 @@ const Caregiver = () => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(parseInt(id));
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [checkInput, setCheckInput] = useState("");
   const [formValues, setFormValues] = useState({
     fullName: "",
     age: "",
@@ -29,9 +28,7 @@ const Caregiver = () => {
     cna: "",
   });
 
-  const url = "http://localhost:9292" || "https://inputserver.herokuapp.com"
-
-  console.dir(formValues);
+  const url = "http://localhost:9292" || "https://inputserver.herokuapp.com";
 
   const handleAnswer = async (e) => {
     e.preventDefault();
@@ -54,7 +51,6 @@ const Caregiver = () => {
         const formData = {
           formValue: updatedFormValues, // Wrap formValues inside the formValue key
         };
-        console.log(JSON.stringify(formData));
 
         // Your fetch request here
         const response = await fetch(`${url}/add-row`, {
@@ -86,7 +82,6 @@ const Caregiver = () => {
   };
 
   const handleOptionClick = (option, name) => {
-    console.log("clicked", option, name);
     setCurrentQuestion(currentQuestion + 1);
     navigate(`/caregiver-forms/${parseInt(id) + 1}`);
     setFormValues((prev) => ({ ...prev, [name]: option }));
@@ -143,7 +138,6 @@ const Caregiver = () => {
       window.removeEventListener("popstate", handlePopState);
     };
   }, []);
-  console.log(currentQuestion);
 
   const letters = [...Array(26)].map((_, i) =>
     String.fromCharCode("A".charCodeAt(0) + i)
