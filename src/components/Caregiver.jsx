@@ -57,11 +57,39 @@ const Caregiver = () => {
     setFormValues({ ...formValues, phone: value });
   };
 
-  const handleCheckInput = (e, form) => {
-    const value = e.target.value;
-    const name = e.target.name;
-
-    setFormValues((prev) => ({ ...prev, [name]: value }));
+  const handleCheckInput = (e, formName) => {
+    if (e.target.type === "checkbox") {
+      const value = e.target.value;
+      const isChecked = e.target.checked;
+  
+      setFormValues((prevFormValues) => {
+        let updatedValues;
+  
+        if (isChecked) {
+          // Add the selected option to the array
+          updatedValues = {
+            ...prevFormValues,
+            [formName]: [...(prevFormValues[formName] || []), value],
+          };
+        } else {
+          // Remove the deselected option from the array
+          updatedValues = {
+            ...prevFormValues,
+            [formName]: prevFormValues[formName].filter(
+              (option) => option !== value
+            ),
+          };
+        }
+  
+        return updatedValues;
+      });
+    } else {
+      const value = e.target.value;
+      setFormValues((prevFormValues) => ({
+        ...prevFormValues,
+        [formName]: value,
+      }));
+    }
   };
 
   useEffect(() => {
@@ -88,42 +116,62 @@ const Caregiver = () => {
           <h2>{form.question}</h2>
 
           <h4>{form.desc}</h4>
-          {form.image && <img src={form.image} alt="" />}
-          {form.options &&
-            form.options.map((option, optionIndex) => {
-              if (option === "Other") {
-                return (
-                  <div className="other" key={optionIndex}>
-                    <h4>Other:</h4>
-                    <input
-                      type="text"
-                      name={form.name}
-                      placeholder="Type your answer here..."
-                      onKeyDown={(e) => {
-                        if (e.keyCode === 13) {
-                          e.preventDefault();
-                          handleCheckInput(e, form.name);
-                        }
-                      }}
-                      onChange={(e) => handleCheckInput(e, form.name)}
-                      required
-                      value={formValues[form.name] || ""}
-                    />
-                  </div>
-                );
-              } else {
-                return (
-                  <button
-                    className="option"
-                    key={optionIndex}
-                    onClick={() => handleOptionClick(option, form.name)}
-                  >
-                    <div className="optionLetter">{letters[optionIndex]}</div>
-                    {option}
-                  </button>
-                );
-              }
-            })}
+          {form.image && <img src={form.image} alt="" className="form-image"/>}
+          <div className={form.type === "check" ? "options" : "options-flex"}>
+            {form.options &&
+              form.options.map((option, optionIndex) => {
+                if (option === "Other") {
+                  return (
+                    <div className="other" key={optionIndex}>
+                      <h4>Other:</h4>
+                      <input
+                        type="text"
+                        name={form.name}
+                        placeholder="Type your answer here..."
+                        onKeyDown={(e) => {
+                          if (e.keyCode === 13) {
+                            e.preventDefault();
+                            handleCheckInput(e, form.name);
+                          }
+                        }}
+                        onChange={(e) => handleCheckInput(e, form.name)}
+                        required
+                        value={formValues[form.name] || ""}
+                      />
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div className="check-or-not" key={optionIndex}>
+                      {form.type === "check" ? (
+                        <label className="checkboxOption" >
+                          <input
+                            type="checkbox"
+                            name={form.name}
+                            value={option}
+                            onChange={(e) => handleCheckInput(e, form.name)}
+                            checked={(formValues[form.name] || []).includes(option)}
+                          />
+                          {option}
+                        </label>
+                      ) : (
+                        <button
+                          className="option"
+                          key={optionIndex}
+                          onClick={() => handleOptionClick(option, form.name)}
+                        >
+                          <div className="optionLetter">
+                            {letters[optionIndex]}
+                          </div>
+
+                          {option}
+                        </button>
+                      )}
+                    </div>
+                  );
+                }
+              })}
+          </div>
           {form.type === "phone" ? (
             <PhoneNumber
               placeholder="Enter phone number"
@@ -150,7 +198,7 @@ const Caregiver = () => {
             />
           ) : form.input && form.options.indexOf("Other") === -1 ? (
             <input
-              type="text"
+              type={form.type === "integer" ? "number" : "text"}
               name={form.name}
               placeholder="Type your answer here..."
               onChange={(e) => handleCheckInput(e, form.name)}

@@ -35,5 +35,11 @@ input:active {
 
 img{
   height: 200px;
-  width: 200px;
+  width: 300px;
+  
+  
+}
+
+svg {
+  image-rendering: crispEdges; /* or pixelated */
 }

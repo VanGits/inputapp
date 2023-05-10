@@ -1,6 +1,7 @@
 import email from "../assets/email.svg"
 import location from "../assets/location.svg"
 import drive from "../assets/drive.svg"
+import location2 from "../assets/location-1.svg"
 
 
 const caregiverData = [
@@ -31,7 +32,7 @@ const caregiverData = [
     "id": 3,
     "question": "We don't mean to be rude, but how old are you?",
     "desc": "Our partners must be at least 18 years old.",
-    "type": "text",
+    "type": "integer",
     "options": [],
     "input": true,
     "image": "",
@@ -68,7 +69,7 @@ const caregiverData = [
     "type": "text",
     "options": [],
     "input": true,
-    "image": location,
+    "image": location2,
     "buttonsOnly": false,
     "name": "location"
   },
@@ -154,7 +155,7 @@ const caregiverData = [
     "id": 13,
     "question": "On what days are you available?",
     "desc": "",
-    "type": "text",
+    "type": "check",
     "options": [
       "Monday",
       "Tuesday",
@@ -166,7 +167,7 @@ const caregiverData = [
     ],
     "input": false,
     "image": "",
-    "buttonsOnly": true,
+    "buttonsOnly": false,
     "name": "day"
 
   },
@@ -174,7 +175,7 @@ const caregiverData = [
     "id": 14,
     "question": "How many hours are you available?",
     "desc": "",
-    "type": "text",
+    "type": "integer",
     "options": [],
     "input": true,
     "image": "",
