@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import caregiverForms from "../questions/caregiver-questions";
 import "../styles/Caregiver.css";
 import { useParams, useNavigate } from "react-router-dom";
-import PhoneInput from "react-phone-number-input";
+
 import PhoneNumber from "./PhoneNumber";
 
 const Caregiver = () => {
@@ -15,19 +15,22 @@ const Caregiver = () => {
   const handleAnswer = (e) => {
     e.preventDefault();
 
-    if(currentQuestion === 15) {
+    if(parseInt(id) === 15) {
         alert("Submitted!")
+        setCurrentQuestion(currentQuestion + 1)
         navigate(`/caregiver-forms/${parseInt(id) + 1}`)
     } else {
+        setCurrentQuestion(currentQuestion + 1)
         navigate(`/caregiver-forms/${parseInt(id) + 1}`);
     }
 
    
   };
-  console.log(currentQuestion)
+  
 
   const handleOptionClick = (option) => {
     console.log("clicked", option);
+    setCurrentQuestion(currentQuestion + 1)
     navigate(`/caregiver-forms/${parseInt(id) + 1}`);
   };
 
@@ -42,15 +45,16 @@ const Caregiver = () => {
 
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentQuestion(parseInt(id) - 1);
+      setCurrentQuestion((prev) => prev - 1);
     };
-
+  
     window.addEventListener("popstate", handlePopState);
-
+  
     return () => {
       window.removeEventListener("popstate", handlePopState);
     };
-  }, [id]);
+  }, []);
+  console.log(currentQuestion)
 
   const letters = [...Array(26)].map((_, i) =>
     String.fromCharCode("A".charCodeAt(0) + i)

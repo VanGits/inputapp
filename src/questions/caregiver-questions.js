@@ -11,7 +11,7 @@ const caregiverData = [
     "options": [],
     "input": false,
     "image": "",
-    "buttonsOnly": true
+    "buttonsOnly": false
   },
   {
     "id": 2,
