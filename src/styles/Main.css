@@ -1,38 +1,57 @@
-.mainWrapper{
-    background-color: #537188;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    color: white;
+.mainWrapper {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  color: white;
 }
 
-.Main{
-    background-color: white;
-    width: 500px;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    flex-direction: column;
+.Main {
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  flex-direction: column;
+  box-shadow: 0px 2.98px 7.46px 0px rgba(0, 0, 0, 0.5)
 }
 
-.Main button{
-    align-self: flex-start;
+.Main button {
+  align-self: flex-start;
+  margin: 12px;
 }
 
-.Main button{
-    margin-top: 32px;
-    padding: 12px;
-    width: 200px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    background-color: #537188;
-    font-size: 20px;
-    font-weight: 600;
-    cursor: pointer;
+.Main button {
+  margin-top: 32px;
+  padding: 12px;
+  width: 200px;
+  
+  border: none;
+  color: white;
+  background-color: #1e6f6c;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.Main h1 {
+  color: #1e6f6c;
+  border-bottom: 1px solid grey;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .button-wrapper{
+        flex-direction: column;
+    }
 }
